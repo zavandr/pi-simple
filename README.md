@@ -1,8 +1,8 @@
 # Finite simple groups with narrow prime spectrum
-[GAP](https://www.gap-system.org/) code which enables finding all finite nonabelian simple groups 
+[GAP](https://www.gap-system.org/) code which enables finding all finite nonabelian simple groups  
 with prescibed set of prime divisors of the order (i.e. the *prime spectrum*).
 
-This code accompanies the paper 
+The code accompanies the paper 
 
 *Simple groups with narrow prime spectrum: Extended list*,  
 submitted  
