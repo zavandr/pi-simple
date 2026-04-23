@@ -704,7 +704,7 @@ sortedCodesSimpleGroups10000;
           [ "S4(7)", false, [ 2, 3, 5, 7 ], [ [ 2, 8 ], [ 3, 2 ], [ 5, 2 ], [ 7, 4 ] ], [ 4, 2, 7, 1 ] ], 
           [ "J2", false, [ 2, 3, 5, 7 ], [ [ 2, 7 ], [ 3, 3 ], [ 5, 2 ], [ 7, 1 ] ], [ 1, 5, 0, 0 ] ] ] ], 
 
-   ......  output omitted for primes 11,...  ......
+   ......  output omitted for primes 11 through 9949  ......
 
   [ 9967, [ [ "A9967", true, [ 2, 9967, 0, 0 ] ], 
             [ "A9968", true, [ 2, 9968, 0, 0 ] ], 
@@ -751,7 +751,7 @@ sortedCodesSimpleGroups10000;
             [ "A10006", true, [ 2, 10006, 0, 0 ] ], 
             [ "L2(9973)", true, [ 2, 3, 277, 4987, 9973 ], [ [ 2, 2 ], [ 3, 2 ], [ 277, 1 ], [ 4987, 1 ], [ 9973, 1 ] ], [ 3, 2, 9973, 1 ] ] ] ] ]
 
- ## Contents of main Tables in the papers are based on the above output
+ ## The contents of main Tables in the papers are based on the above output
 
 ### END ###
 ###########
