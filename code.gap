@@ -743,7 +743,7 @@ sortedCodesSimpleGroups10000;        ## result
             [ "A10006", true, [ 2, 10006, 0, 0 ] ], 
             [ "L2(9973)", true, [ 2, 3, 277, 4987, 9973 ], [ [ 2, 2 ], [ 3, 2 ], [ 277, 1 ], [ 4987, 1 ], [ 9973, 1 ] ], [ 3, 2, 9973, 1 ] ] ] ] ]
 
- ## The contents of the main Tables in the papers are based on the above output
+## Theorm 1 and the Tables follow from the above outputs
 
 ### END ###
 ###########
