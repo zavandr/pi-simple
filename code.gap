@@ -579,7 +579,7 @@ end;
 
 #### Example 1 ####
 
-pi := [ 2, 3, 5, 11, 37, 61, 13421 ];   ##  =  pi( U5(11) ),   ( U5(11) has the largest order prime divisor of all group in the Atlas table on pp. 239--242 )
+pi := [ 2, 3, 5, 11, 37, 61, 13421 ];   ##  =  pi( U5(11) ),   ( U5(11) has the largest prime divisor of its order among all group in the Atlas table on pp. 239--242 )
 
 codes := SimpleGroupsPi(pi);;           ## codes of found groups 
 time;          # 3369                   ## time may vary for distinct runs/systems/etc.
@@ -610,7 +610,7 @@ List( orders, o -> List( Collected(Factors(o)), t -> t[1] ));   ## prime spectra
 #### Example 2 ####
 
 SetInfoLevel(InfoPiSimple,1);
-codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with order prime divisors at most 1000
+codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with prime divisors of their orders at most 1000
 
 #I  p = 2
 #I    Case Ln(q)
@@ -622,7 +622,7 @@ codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with
 #I    Case 2G2(q)
 #I    Case Sporadic
  
-Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 nonabelian FSGs with order prime divisors at most 1000
+Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 nonabelian FSGs with prime divisors of their orders at most 1000
 
 
 
@@ -633,10 +633,10 @@ Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 nona
 
 ## Assuming Primes4 is a list of all 1229 primes not exceeding 10000
 
-codesSimpleGroups10000 := SimpleGroupsPi( Primes4 );;    ## codes for all FSGs with order prime divisors at most 10000
+codesSimpleGroups10000 := SimpleGroupsPi( Primes4 );;    ## codes for all FSGs with prime divisors of their orders at most 10000
 time; # 90685445                                         ##  ~ 25 hours ( time may vary for distinct runs/systems/etc. )
 
-Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 nonabelian FSGs with order prime divisors at most 10000
+Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 nonabelian FSGs with prime divisors of their orders at most 10000
                                                          ##     as claimed in the paper
 
 ## Sorting codesSimpleGroups10000 by largest prime divisor :
@@ -644,7 +644,7 @@ Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 
 ## The result of the following soritng procedure is a list sortedCodesSimpleGroups10000 of pairs [p,list_p], where 
 ## p                is a prime (up to 10000)
 ## list_p           is a list of tuples [ name, generic, primeSpectrum, collectedFactors, code ]
-##                     one for each group G whose maximal order prime divisor is p
+##                     one for each group G whose maximal prime divisor of its orders is p
 ## name             is the string name of G
 ## generic          is true of false according as G is generic or not
 ## primeSpectrum    is pi(G) (omitted for large alternating groups)
