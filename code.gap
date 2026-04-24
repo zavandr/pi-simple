@@ -8,7 +8,7 @@
 
 
 ## Given a set of primes pi, the function <SimpleGroupsPi> defined below in Section 2
-## returns ( codes of ) all nonabelian simple groups  G  with  pi(G)  contained in  pi
+## returns ( the codes of ) all nonabelian simple groups  G  with  pi(G)  contained in  pi.
 ##
 ## Example of usage:
 #
@@ -18,36 +18,36 @@
 ## More examples can be found below in Section 4.
   
   
-## The Code of a nonabelian FSG is a quadruple [t,n,p,k]
+## The "code" of a nonabelian FSG is a quadruple [t,n,p,k], where 
 ## 
-## t in [1..18]
+## t in [1..18] ecodes the following 18 families of FSGs
 ## 
-## t   Code        Parameters
+##   t    Family      Parameters
 ## 
-## 1   Sporadic    p=* k=*   ( * = 'whatever', value ignored )
-## 2   Alt n       p=* k=*
-## 3   L n (q)     q=p^k
-## 4   S 2n (q)    q=p^k
-## 5   O 2n+1 (q)  q=p^k
-## 6   O+ 2n (q)   q=p^k
-## 7   U n (q)     q=p^k
-## 8   O- 2n (q)   q=p^k
-## 9   G2 (q)      q=p^k n=*
-## 10  F4 (q)      q=p^k n=*
-## 11  E6 (q)      q=p^k n=*
-## 12  E7 (q)      q=p^k n=*
-## 13  E8 (q)      q=p^k n=*
-## 14  3D4 (q)     q=p^k n=*
-## 15  2E6 (q)     q=p^k n=*
-## 16  Sz (q)      q=2^k n=* p=* 
-## 17  2G2 (q)     q=3^k n=* p=* 
-## 18  2F4 (q)     q=2^k n=* p=* 
+##   1    Sporadic    p=* k=*   ( * = 'whatever', value ignored )
+##   2    Alt n       p=* k=*
+##   3    L n (q)     q=p^k
+##   4    S 2n (q)    q=p^k
+##   5    O 2n+1 (q)  q=p^k
+##   6    O+ 2n (q)   q=p^k
+##   7    U n (q)     q=p^k
+##   8    O- 2n (q)   q=p^k
+##   9    G2 (q)      q=p^k n=*
+##  10    F4 (q)      q=p^k n=*
+##  11    E6 (q)      q=p^k n=*
+##  12    E7 (q)      q=p^k n=*
+##  13    E8 (q)      q=p^k n=*
+##  14    3D4 (q)     q=p^k n=*
+##  15    2E6 (q)     q=p^k n=*
+##  16    Sz (q)      q=2^k n=* p=* 
+##  17    2G2 (q)     q=3^k n=* p=* 
+##  18    2F4 (q)     q=2^k n=* p=* 
 
 #################################################
 ##
 ##   Section 1. Preliminary lists and functions 
   
-FamilyNames :=                              ##  name strings for the 18 families of simple groups
+FamilyNames :=                              ##  name strings for the 18 families
   ["Sporadic","Alt",  "L",   "S",   "O", 
    "O+",  "U", "O-",  "G2",  "F4",
    "E6", "E7", "E8", "3D4", "2E6",
@@ -63,7 +63,7 @@ SporadicNames:=                              ##  names of sporadic groups as use
 
 IsAdmissibleCode := function(y)              ## checks if y = [t,n,p,k] is an admissible code for a FSG
 local t,n,p,k;
-  t:=y[1];n:=y[2];p:=y[3];k:=y[4];
+  t:=y[1]; n:=y[2]; p:=y[3]; k:=y[4];
 return
   ( t =  1 and n in [1..26] ) or                                ## Sporadic
   ( t =  2 and n>=5)    or                                      ## Alternating
@@ -119,7 +119,7 @@ local t,i;
 return t;
 end;
 
-##################### L_n(q) #############################
+######################## L_n(q) #############################
 
 PiContainsLn := function(p,k,n,pi)        ## checks if pi(L_n(p^k)) is in pi
 local i,t;
@@ -131,7 +131,7 @@ local i,t;
 return t;
 end;
 
-##################### S_{2n}(q) #############################
+######################## S_{2n}(q) #############################
 
 PiContainsS2n := function(p,k,n,pi)        ## checks if pi(S_{2n}(p^k)) is in pi
 local t,i;
@@ -144,7 +144,7 @@ return t;
 end;
 
 
-##################### O_{2n+1}(q) #############################
+####################### O_{2n+1}(q) #############################
 
 PiContainsO2n1 := function(p,k,n,pi)        ## checks if pi(O_{2n+1}(p^k))  is in pi
 local t,i;
@@ -156,7 +156,7 @@ local t,i;
 return t;
 end;
 
-##################### O_{2n}^+(q) #############################
+####################### O_{2n}^+(q) #############################
 
 PiContainsO2nPlus := function(p,k,n,pi)        ## checks if pi(O_{2n}^+(p^k)) is in pi
 local t,i;
@@ -169,7 +169,7 @@ local t,i;
 return t;
 end;
 
-##################### U_n(q) #############################
+####################### U_n(q) #############################
 
 PiContainsUn := function(p,k,n,pi)        ## checks if pi(U_n(p^k)) is in pi
 local t,i;
@@ -194,7 +194,7 @@ local t,i;
 return t;
 end;
 
-##################### G2(q) #############################
+######################## G2(q) ##############################
 
 PiContainsG2 := function(p,k,pi)         ## checks if pi(G2(p^k)) is in pi
 local t;
@@ -203,7 +203,7 @@ local t;
 return t;
 end;
 
-##################### F4(q) #############################
+####################### F4(q) #############################
 
 PiContainsF4 := function(p,k,pi)         ## checks if pi(F4(p^k)) is in pi
 local t;
@@ -213,7 +213,7 @@ local t;
 return t;
 end;
 
-##################### E6(q) #############################
+####################### E6(q) #############################
 
 PiContainsE6 := function(p,k,pi)         ## checks if pi(E6(p^k)) is in pi
 local t;
@@ -251,7 +251,7 @@ local t;
 return t;
 end;
 
-##################### 3D_4(q) #############################
+####################### 3D_4(q) #############################
 
 PiContains3D4 := function(p,k,pi)         ## checks if pi(3D_4(p^k)) is in pi
 local t;
@@ -261,7 +261,7 @@ local t;
 return t;
 end;
 
-##################### 2E_6(q) #############################
+####################### 2E_6(q) #############################
 
 PiContains2E6 := function(p,k,pi)         ## checks if pi(2E_6(p^k)) is in pi
 local t;
@@ -273,7 +273,7 @@ local t;
 return t;
 end;
 
-##################### Sz(q) #############################
+####################### Sz(q) #############################
 
 PiContainsSz := function(k,pi)         ## checks if pi(Sz(2^k)) is in pi
 local t;
@@ -283,7 +283,7 @@ local t;
 return t;
 end;
 
-##################### 2G_2(q) #############################
+####################### 2G_2(q) #############################
 
 PiContains2G2 := function(k,pi)         ## checks if pi(2G_2(3^k)) is in pi
 local t;
@@ -293,7 +293,7 @@ local t;
 return t;
 end;
 
-##################### 2F_4(q) #############################
+####################### 2F_4(q) #############################
 
 PiContains2F4 := function(k,pi)         ## checks if pi(2F_4(2^k)) is in pi
 local t;
@@ -313,9 +313,6 @@ InfoPiSimple := NewInfoClass("InfoPiSimple");;  ## InfoClass
 ## Use SetInfoLevel(InfoPiSimple,2); 
 ## for an even more verbose output
 
-###
-## End of Preliminary lists and functions 
-#########################################
 
 #############################
 ##
@@ -499,9 +496,6 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
 return result;
 end;
 
-###
-## End of Section Main function
-###############################
 
 ###########################
 ##
@@ -568,9 +562,6 @@ if t[1]=1 then return SporadicNames[t[2]];
 fi;
 end;
 
-###
-## End of Section Auxiliaries 
-#############################
 
 ########################
 ##
@@ -584,10 +575,11 @@ end;
 ##
 ##  The output of a command is given after a single '#' 
 ##  A comment is given after a double '#' 
-  
-## Example 1 ##
 
-pi := [ 2, 3, 5, 11, 37, 61, 13421 ];   ##  =  pi( U5(11) ),   ( U5(11) has the largest order prime divisor of all group in the Atlas table, pp.239--242 )
+
+#### Example 1 ####
+
+pi := [ 2, 3, 5, 11, 37, 61, 13421 ];   ##  =  pi( U5(11) ),   ( U5(11) has the largest order prime divisor of all group in the Atlas table on pp. 239--242 )
 
 codes := SimpleGroupsPi(pi);;           ## codes of found groups 
 time;          # 3369                   ## time may vary for distinct runs/systems/etc.
@@ -613,9 +605,9 @@ List( orders, o -> List( Collected(Factors(o)), t -> t[1] ));   ## prime spectra
 #   [ 2, 3, 5, 11 ],                 ##  "M11"                
 #   [ 2, 3, 5, 11 ] ]                ##  "M12"                
 
-########
 
-## Example 2 ##
+
+#### Example 2 ####
 
 SetInfoLevel(InfoPiSimple,1);
 codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with order prime divisors at most 1000
@@ -632,20 +624,20 @@ codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with
  
 Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 nonabelian FSGs with order prime divisors at most 1000
 
-#######
 
-## Example 3 ##
 
-## Obs. Larger lists of primes (than those available in GAP by default) 
+#### Example 3 ####
+
+## Obs. Larger lists of primes ( than those available in GAP by default ) 
 ##      can be downloaded from various online sources, e.g., from t5k.org
 
 ## Assuming Primes4 is a list of all 1229 primes not exceeding 10000
 
-codesSimpleGroups10000 := SimpleGroupsPi( Primes4 );;    ## codes for all FSGs with order prime divisors at most 1000
+codesSimpleGroups10000 := SimpleGroupsPi( Primes4 );;    ## codes for all FSGs with order prime divisors at most 10000
 time; # 90685445                                         ##  ~ 25 hours ( time may vary for distinct runs/systems/etc. )
 
-Size(codesSimpleGroups10000); # 15072       ##  => There are 1972 nonabelian FSGs with order prime divisors at most 10000
-                                            ##     as claimed in the paper
+Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 nonabelian FSGs with order prime divisors at most 10000
+                                                         ##     as claimed in the paper
 
 ## Sorting codesSimpleGroups10000 by largest prime divisor :
 
@@ -653,7 +645,7 @@ Size(codesSimpleGroups10000); # 15072       ##  => There are 1972 nonabelian FSG
 ## p                is a prime (up to 10000)
 ## list_p           is a list of tuples [ name, generic, primeSpectrum, collectedFactors, code ]
 ##                     one for each group G whose maximal order prime divisor is p
-## mane             is the string name of G
+## name             is the string name of G
 ## generic          is true of false according as G is generic or not
 ## primeSpectrum    is pi(G) (omitted for large alternating groups)
 ## collectedFactors is the factorisation of the order (omitted for large alternating groups)
@@ -679,9 +671,9 @@ for code in codesSimpleGroups10000 do
   fi;
 od;
 
-time; #  11695  ## may vary for distinct runs/systems/etc.
+time; #  11695                       ## may vary for distinct runs/systems/etc.
 
-sortedCodesSimpleGroups10000;   
+sortedCodesSimpleGroups10000;        ## result
 
 [ [ 2, [  ] ], 
   [ 3, [  ] ], 
@@ -751,7 +743,7 @@ sortedCodesSimpleGroups10000;
             [ "A10006", true, [ 2, 10006, 0, 0 ] ], 
             [ "L2(9973)", true, [ 2, 3, 277, 4987, 9973 ], [ [ 2, 2 ], [ 3, 2 ], [ 277, 1 ], [ 4987, 1 ], [ 9973, 1 ] ], [ 3, 2, 9973, 1 ] ] ] ] ]
 
- ## The contents of main Tables in the papers are based on the above output
+ ## The contents of the main Tables in the papers are based on the above output
 
 ### END ###
 ###########
