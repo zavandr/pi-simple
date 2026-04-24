@@ -16,4 +16,4 @@ Sib. Elect. Math. Reports, **6** (2009), 1--12.
 
 by Andrei V. Zavarnitsine 
 
-The code is in [this file](code.gap).
+and can be found in [this file](code.gap).
