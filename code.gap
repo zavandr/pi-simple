@@ -24,24 +24,24 @@
 ## 
 ##   t    Family      Parameters
 ## 
-##   1    Sporadic    p=* k=*   ( * = 'whatever', value ignored )
-##   2    Alt n       p=* k=*
+##   1    Sporadic    n in [1..26], p=*, k=*   ( * = 'whatever', value ignored )
+##   2    Alt n       p=*, k=*
 ##   3    L n (q)     q=p^k
 ##   4    S 2n (q)    q=p^k
 ##   5    O 2n+1 (q)  q=p^k
 ##   6    O+ 2n (q)   q=p^k
 ##   7    U n (q)     q=p^k
 ##   8    O- 2n (q)   q=p^k
-##   9    G2 (q)      q=p^k n=*
-##  10    F4 (q)      q=p^k n=*
-##  11    E6 (q)      q=p^k n=*
-##  12    E7 (q)      q=p^k n=*
-##  13    E8 (q)      q=p^k n=*
-##  14    3D4 (q)     q=p^k n=*
-##  15    2E6 (q)     q=p^k n=*
-##  16    Sz (q)      q=2^k n=* p=* 
-##  17    2G2 (q)     q=3^k n=* p=* 
-##  18    2F4 (q)     q=2^k n=* p=* 
+##   9    G2 (q)      q=p^k, n=*
+##  10    F4 (q)      q=p^k, n=*
+##  11    E6 (q)      q=p^k, n=*
+##  12    E7 (q)      q=p^k, n=*
+##  13    E8 (q)      q=p^k, n=*
+##  14    3D4 (q)     q=p^k, n=*
+##  15    2E6 (q)     q=p^k, n=*
+##  16    Sz (q)      q=2^k, n=*, p=* 
+##  17    2G2 (q)     q=3^k, n=*, p=* 
+##  18    2F4 (q)     q=2^k, n=*, p=* 
 
 #################################################
 ##
