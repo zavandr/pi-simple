@@ -533,7 +533,7 @@ end;
 
 NameByCode:=function(t) ## returns a human-readable form of a group with code t
 local s,q,qstr,mq;
-mq:=50; ## powers q=p^k > mq are not evaluated
+mq:=100; ## powers q=p^k > mq are not evaluated
 if t[3]^t[4]>mq and t[4]>1  then qstr:=Concatenation(String(t[3]),"^",String(t[4]));
                             else qstr:=String(t[3]^t[4]);
 fi;
