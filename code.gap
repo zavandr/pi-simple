@@ -67,13 +67,13 @@ local t,n,p,k;
 return
   ( t =  1 and n in [1..26] ) or                                ## Sporadic
   ( t =  2 and n>=5)    or                                      ## Alternating
-  ( t =  3 and ( (n>=5) or                                      ## Ln(q)       ( L2(4) and L2(5) are encoded [ 2, 5, 0, 0 ] as A5 )
-                 (n in [3,4] and p^k>2) or                      ##             ( L2(9) is encoded [ 2, 6, 0, 0 ] as A6 )
-                 (n=2 and p^k>5 and p^k<>9) ) ) or              ##             ( L3(2) is encoded [ 3, 2, 7, 1 ] as L2(7) )  
-  ( t =  4 and ( (n>=3) or (n=2 and p^k>2) ) ) or               ## S2n(q)      ( n = 1 excluded, since S2(q) ~= L2(q) )
+  ( t =  3 and ( (n>=5) or                                      ## Ln(q)         ( L2(4) and L2(5) are encoded as A5 )
+                 (n in [3,4] and p^k>2) or                      ##               ( L2(9) is encoded as A6 )
+                 (n=2 and p^k>5 and p^k<>9) ) ) or              ##               ( L3(2) is encoded as L2(7) )  
+  ( t =  4 and ( (n>=3) or (n=2 and p^k>2) ) ) or               ## S2n(q)        ( S2(q) is encoded as L2(q) )
   ( t =  5 and ( (n>=3) and (p<>2) ) ) or                       ## O2n+1(q) 
   ( t =  6 and n>=4 )   or                                      ## O_{2n}^+(q)
-  ( t =  7 and ( (n>=5) or (n in [3,4] and p^k>2) ) ) or        ## U_n(q)      ( U4(2) is encoded [ 4, 2, 3, 1 ] as S4(3) )  
+  ( t =  7 and ( (n>=5) or (n in [3,4] and p^k>2) ) ) or        ## U_n(q)        ( U4(2) is encoded as S4(3) )  
   ( t =  8 and n>=4  )  or                                      ## O_{2n}-(q)
   ( t =  9 and p^k>2 )  or                                      ## G2(q)
   ( t = 10 and true  )  or                                      ## F4(q)
@@ -84,7 +84,7 @@ return
   ( t = 15 and true  )  or                                      ## 2E6(q)
   ( t = 16 and k mod 2 = 1 and k>1 ) or                         ## Sz(q)
   ( t = 17 and k mod 2 = 1 and k>1 ) or                         ## 2G_2(q)
-  ( t = 18 and k mod 2 = 1 );                                   ## 2F_4(q)   ( k = 1 encodes the Tits group 2F_4(2)' )
+  ( t = 18 and k mod 2 = 1 );                                   ## 2F_4(q)       ( k = 1 encodes the Tits group 2F_4(2)' )
 end;
 
 ####################################################################
@@ -610,7 +610,7 @@ List( orders, o -> List( Collected(Factors(o)), t -> t[1] ));   ## prime spectra
 
 #### Example 2 ####
 
-SetInfoLevel(InfoPiSimple,1);
+SetInfoLevel(InfoPiSimple,1);                         ## to keep track of calculations
 codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with prime divisors of their orders at most 1000
 
 #I  p = 2
