@@ -8,7 +8,7 @@
 
 
 ## Given a set of primes pi, the function <SimpleGroupsPi> defined below in Section 2
-## returns ( the codes of ) all nonabelian simple groups  G  with  π(G) ⊆ pi.
+## returns ( the codes of ) all non-abelian simple groups  G  with  π(G) ⊆ pi.
 ##
 ## Example of usage:
 ##
@@ -18,30 +18,30 @@
 ## More examples can be found below in Section 4.
   
   
-## The "code" of a nonabelian FSG is a quadruple [t,n,p,k], where 
+## The "code" of a non-abelian FSG is a quadruple [ t, n, p, k ], where 
 ## 
 ## t = 1,...,18  ecodes the following 18 families of FSGs
 ## 
 ##   t    Family      Parameters
 ## -----------------------------------
-##   1    Sporadic    n=1,...,26, p=*, k=*   ( * = any number, value ignored )
-##   2    Alt n       p=*, k=*
-##   3    L n (q)     q=p^k
-##   4    S 2n (q)    q=p^k
-##   5    O 2n+1 (q)  q=p^k
-##   6    O+ 2n (q)   q=p^k
-##   7    U n (q)     q=p^k
-##   8    O- 2n (q)   q=p^k
-##   9    G2 (q)      q=p^k, n=*
-##  10    F4 (q)      q=p^k, n=*
-##  11    E6 (q)      q=p^k, n=*
-##  12    E7 (q)      q=p^k, n=*
-##  13    E8 (q)      q=p^k, n=*
-##  14    3D4 (q)     q=p^k, n=*
-##  15    2E6 (q)     q=p^k, n=*
-##  16    Sz (q)      q=2^k, n=*, p=* 
-##  17    2G2 (q)     q=3^k, n=*, p=* 
-##  18    2F4 (q)     q=2^k, n=*, p=* 
+##   1    Sporadic    n = 1,...,26, p = *, k = *   ( * = any number, usually 0. Value ignored )
+##   2    Alt n       p = *, k = *
+##   3    L n (q)     q = p^k
+##   4    S 2n (q)    q = p^k
+##   5    O 2n+1 (q)  q = p^k
+##   6    O+ 2n (q)   q = p^k
+##   7    U n (q)     q = p^k
+##   8    O- 2n (q)   q = p^k
+##   9    G2 (q)      q = p^k, n = *
+##  10    F4 (q)      q = p^k, n = *
+##  11    E6 (q)      q = p^k, n = *
+##  12    E7 (q)      q = p^k, n = *
+##  13    E8 (q)      q = p^k, n = *
+##  14    3D4 (q)     q = p^k, n = *
+##  15    2E6 (q)     q = p^k, n = *
+##  16    Sz (q)      q = 2^k, n = *, p = * 
+##  17    2G2 (q)     q = 3^k, n = *, p = * 
+##  18    2F4 (q)     q = 2^k, n = *, p = * 
 
 #################################################
 ##
@@ -172,7 +172,7 @@ end;
 
 ####################### U_n(q) #############################
 
-PiContainsUn := function(p,k,n,pi)        ## checks if pi( U_n(p^k) ) is in pi
+PiContainsUn := function(p,k,n,pi)             ## checks if pi( U_n(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -197,7 +197,7 @@ end;
 
 ######################## G2(q) ##############################
 
-PiContainsG2 := function(p,k,pi)         ## checks if pi( G2(p^k) ) is in pi
+PiContainsG2 := function(p,k,pi)                ## checks if pi( G2(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(6*k)-1);
@@ -206,7 +206,7 @@ end;
 
 ####################### F4(q) #############################
 
-PiContainsF4 := function(p,k,pi)         ## checks if pi( F4(p^k) ) is in pi
+PiContainsF4 := function(p,k,pi)                ## checks if pi( F4(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(12*k)-1);
@@ -216,7 +216,7 @@ end;
 
 ####################### E6(q) #############################
 
-PiContainsE6 := function(p,k,pi)         ## checks if pi( E6(p^k) ) is in pi
+PiContainsE6 := function(p,k,pi)                ## checks if pi( E6(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(12*k)-1);
@@ -228,7 +228,7 @@ end;
 
 ##################### E7(q) #############################
 
-PiContainsE7 := function(p,k,pi)         ## checks if pi( E7(p^k) ) is in pi
+PiContainsE7 := function(p,k,pi)                 ## checks if pi( E7(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(18*k)-1);
@@ -241,7 +241,7 @@ end;
 
 ##################### E8(q) #############################
 
-PiContainsE8 := function(p,k,pi)         ## checks if pi( E8(p^k) ) is in pi
+PiContainsE8 := function(p,k,pi)                  ## checks if pi( E8(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(30*k)-1);
@@ -254,7 +254,7 @@ end;
 
 ####################### 3D_4(q) #############################
 
-PiContains3D4 := function(p,k,pi)         ## checks if pi( 3D_4(p^k) ) is in pi
+PiContains3D4 := function(p,k,pi)                  ## checks if pi( 3D_4(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(8*k)+p^(4*k)+1);
@@ -264,7 +264,7 @@ end;
 
 ####################### 2E_6(q) #############################
 
-PiContains2E6 := function(p,k,pi)         ## checks if pi( 2E_6(p^k) ) is in pi
+PiContains2E6 := function(p,k,pi)                   ## checks if pi( 2E_6(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(12*k)-1);
@@ -276,7 +276,7 @@ end;
 
 ####################### Sz(q) #############################
 
-PiContainsSz := function(k,pi)         ## checks if pi( Sz(2^k) ) is in pi
+PiContainsSz := function(k,pi)                       ## checks if pi( Sz(2^k) ) is in pi
 local t;
   t:=2 in pi;
   t:=t and IsPiNumber(pi,2^(2*k)+1);
@@ -286,7 +286,7 @@ end;
 
 ####################### 2G_2(q) #############################
 
-PiContains2G2 := function(k,pi)         ## checks if pi( 2G_2(3^k) ) is in pi
+PiContains2G2 := function(k,pi)                       ## checks if pi( 2G_2(3^k) ) is in pi
 local t;
   t:=3 in pi;
   t:=t and IsPiNumber(pi,3^(3*k)+1);
@@ -296,7 +296,7 @@ end;
 
 ####################### 2F_4(q) #############################
 
-PiContains2F4 := function(k,pi)         ## checks if pi( 2F_4(2^k) ) is in pi
+PiContains2F4 := function(k,pi)                       ## checks if pi( 2F_4(2^k) ) is in pi
 local t;
   t:=2 in pi;
   t:=t and IsPiNumber(pi,2^(6*k)+1);
@@ -305,7 +305,7 @@ local t;
 return t;
 end;
 
-InfoPiSimple := NewInfoClass("InfoPiSimple");;  ## InfoClass
+InfoPiSimple := NewInfoClass("InfoPiSimple");;        ## InfoClass
 
 ## Use SetInfoLevel(InfoPiSimple,1); 
 ## if the calculations are slow  
@@ -320,7 +320,7 @@ InfoPiSimple := NewInfoClass("InfoPiSimple");;  ## InfoClass
 ##   Section 2. Main function 
 
 ## Given a set of primes pi, the function <SimpleGroupsPi> returns  
-## the codes of  all nonabelian  simple groups G  with pi(G) in pi
+## the codes of  all non-abelian  simple groups G  with pi(G) ⊆ pi
 
 SimpleGroupsPi := function(pi)  
 local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
@@ -568,7 +568,7 @@ end;
 ##
 ##   Section 4. Examples 
 ##
-## Finding all nonabelian finite simple groups with prime spectrum a subset of a given set <pi>
+## Finding all non-abelian finite simple groups with prime spectrum a subset of a given set <pi>
 
 ##
 ##  First, paste into GAP all the lists and functions from the above three sections:
@@ -623,7 +623,7 @@ codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with
 #I    Case 2G2(q)
 #I    Case Sporadic
  
-Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 nonabelian FSGs with prime divisors of their orders at most 1000
+Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 non-abelian FSGs with prime divisors of their orders at most 1000
 
 
 
@@ -637,7 +637,7 @@ Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 nona
 codesSimpleGroups10000 := SimpleGroupsPi( Primes4 );;    ## codes for all FSGs with prime divisors of their orders at most 10000
 time; # 90685445                                         ##  ~ 25 hours ( time may vary for distinct runs/systems/etc. )
 
-Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 nonabelian FSGs with prime divisors of their orders at most 10000
+Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 non-abelian FSGs with prime divisors of their orders at most 10000
                                                          ##     as claimed in the paper
 
 ## Sorting codesSimpleGroups10000 by largest prime factor :
