@@ -8,10 +8,10 @@
 
 
 ## Given a set of primes pi, the function <SimpleGroupsPi> defined below in Section 2
-## returns ( the codes of ) all nonabelian simple groups  G  with  pi(G)  contained in  pi.
+## returns ( the codes of ) all nonabelian simple groups  G  with  π(G) ⊆ pi.
 ##
 ## Example of usage:
-#
+##
 ## gap> List( SimpleGroupsPi( [ 2, 3, 5 ] ), NameByCode );
 ## [ "A5", "A6", "S4(3)" ]
 ## 
@@ -20,11 +20,11 @@
   
 ## The "code" of a nonabelian FSG is a quadruple [t,n,p,k], where 
 ## 
-## t in [1..18] ecodes the following 18 families of FSGs
+## t = 1,...,18  ecodes the following 18 families of FSGs
 ## 
 ##   t    Family      Parameters
-## 
-##   1    Sporadic    n in [1..26], p=*, k=*   ( * = any number, value ignored )
+## -----------------------------------
+##   1    Sporadic    n=1,...,26, p=*, k=*   ( * = any number, value ignored )
 ##   2    Alt n       p=*, k=*
 ##   3    L n (q)     q=p^k
 ##   4    S 2n (q)    q=p^k
@@ -48,10 +48,10 @@
 ##   Section 1. Preliminary lists and functions 
   
 FamilyNames :=                              ##  name strings for the 18 families
-  ["Sporadic","Alt",  "L",   "S",   "O", 
-   "O+",  "U", "O-",  "G2",  "F4",
-   "E6", "E7", "E8", "3D4", "2E6",
-                "Sz","2G2","2F4"];
+  ["Sporadic", "Alt",  "L",    "S",  "O", 
+   "O+",  "U",  "O-",  "G2",  "F4",
+   "E6", "E7",  "E8", "3D4", "2E6",
+                "Sz", "2G2", "2F4"];
 
 SporadicNames:=                              ##  names of sporadic groups as used in GAP
 [ "M11",  "M12",  "J1", "M22",  "J2", 
@@ -84,7 +84,7 @@ return
   ( t = 15 and true  )  or                                      ## 2E6(q)
   ( t = 16 and k mod 2 = 1 and k>1 ) or                         ## Sz(q)
   ( t = 17 and k mod 2 = 1 and k>1 ) or                         ## 2G_2(q)
-  ( t = 18 and k mod 2 = 1 );                                   ## 2F_4(q)       ( k = 1 encodes the Tits group 2F_4(2)' )
+  ( t = 18 and k mod 2 = 1 );                                   ## 2F_4(q)       ( k = 1 encodes the Tits group 2F4(2)' )
 end;
 
 ####################################################################
@@ -110,7 +110,7 @@ end;
 
 ########################### Alt_n ###############################
 
-PiContainsAltn := function(n,pi)        ## checks if pi(Alt_n) is in pi
+PiContainsAltn := function(n,pi)        ## checks if pi( Alt_n ) is in pi
 local t,i;
   t:=true;
   i:=3;
@@ -122,7 +122,7 @@ end;
 
 ######################## L_n(q) #############################
 
-PiContainsLn := function(p,k,n,pi)        ## checks if pi(L_n(p^k)) is in pi
+PiContainsLn := function(p,k,n,pi)        ## checks if pi( L_n(p^k) ) is in pi
 local i,t;
   t:=p in pi;
   i:=2;
@@ -134,7 +134,7 @@ end;
 
 ######################## S_{2n}(q) #############################
 
-PiContainsS2n := function(p,k,n,pi)        ## checks if pi(S_{2n}(p^k)) is in pi
+PiContainsS2n := function(p,k,n,pi)        ## checks if pi( S_{2n}(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -147,7 +147,7 @@ end;
 
 ####################### O_{2n+1}(q) #############################
 
-PiContainsO2n1 := function(p,k,n,pi)        ## checks if pi(O_{2n+1}(p^k))  is in pi
+PiContainsO2n1 := function(p,k,n,pi)        ## checks if pi( O_{2n+1}(p^k) )  is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -159,7 +159,7 @@ end;
 
 ####################### O_{2n}^+(q) #############################
 
-PiContainsO2nPlus := function(p,k,n,pi)        ## checks if pi(O_{2n}^+(p^k)) is in pi
+PiContainsO2nPlus := function(p,k,n,pi)        ## checks if pi( O_{2n}^+(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -172,7 +172,7 @@ end;
 
 ####################### U_n(q) #############################
 
-PiContainsUn := function(p,k,n,pi)        ## checks if pi(U_n(p^k)) is in pi
+PiContainsUn := function(p,k,n,pi)        ## checks if pi( U_n(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -184,7 +184,7 @@ end;
 
 ##################### O_{2n}-(q) #############################
 
-PiContainsO2nMinus := function(p,k,n,pi)        ## checks if pi(O_{2n}-(p^k)) is in pi
+PiContainsO2nMinus := function(p,k,n,pi)        ## checks if pi( O_{2n}-(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -197,7 +197,7 @@ end;
 
 ######################## G2(q) ##############################
 
-PiContainsG2 := function(p,k,pi)         ## checks if pi(G2(p^k)) is in pi
+PiContainsG2 := function(p,k,pi)         ## checks if pi( G2(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(6*k)-1);
@@ -206,7 +206,7 @@ end;
 
 ####################### F4(q) #############################
 
-PiContainsF4 := function(p,k,pi)         ## checks if pi(F4(p^k)) is in pi
+PiContainsF4 := function(p,k,pi)         ## checks if pi( F4(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(12*k)-1);
@@ -216,7 +216,7 @@ end;
 
 ####################### E6(q) #############################
 
-PiContainsE6 := function(p,k,pi)         ## checks if pi(E6(p^k)) is in pi
+PiContainsE6 := function(p,k,pi)         ## checks if pi( E6(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(12*k)-1);
@@ -228,7 +228,7 @@ end;
 
 ##################### E7(q) #############################
 
-PiContainsE7 := function(p,k,pi)         ## checks if pi(E7(p^k)) is in pi
+PiContainsE7 := function(p,k,pi)         ## checks if pi( E7(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(18*k)-1);
@@ -241,7 +241,7 @@ end;
 
 ##################### E8(q) #############################
 
-PiContainsE8 := function(p,k,pi)         ## checks if pi(E8(p^k)) is in pi
+PiContainsE8 := function(p,k,pi)         ## checks if pi( E8(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(30*k)-1);
@@ -254,7 +254,7 @@ end;
 
 ####################### 3D_4(q) #############################
 
-PiContains3D4 := function(p,k,pi)         ## checks if pi(3D_4(p^k)) is in pi
+PiContains3D4 := function(p,k,pi)         ## checks if pi( 3D_4(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(8*k)+p^(4*k)+1);
@@ -264,7 +264,7 @@ end;
 
 ####################### 2E_6(q) #############################
 
-PiContains2E6 := function(p,k,pi)         ## checks if pi(2E_6(p^k)) is in pi
+PiContains2E6 := function(p,k,pi)         ## checks if pi( 2E_6(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(12*k)-1);
@@ -276,7 +276,7 @@ end;
 
 ####################### Sz(q) #############################
 
-PiContainsSz := function(k,pi)         ## checks if pi(Sz(2^k)) is in pi
+PiContainsSz := function(k,pi)         ## checks if pi( Sz(2^k) ) is in pi
 local t;
   t:=2 in pi;
   t:=t and IsPiNumber(pi,2^(2*k)+1);
@@ -286,7 +286,7 @@ end;
 
 ####################### 2G_2(q) #############################
 
-PiContains2G2 := function(k,pi)         ## checks if pi(2G_2(3^k)) is in pi
+PiContains2G2 := function(k,pi)         ## checks if pi( 2G_2(3^k) ) is in pi
 local t;
   t:=3 in pi;
   t:=t and IsPiNumber(pi,3^(3*k)+1);
@@ -296,7 +296,7 @@ end;
 
 ####################### 2F_4(q) #############################
 
-PiContains2F4 := function(k,pi)         ## checks if pi(2F_4(2^k)) is in pi
+PiContains2F4 := function(k,pi)         ## checks if pi( 2F_4(2^k) ) is in pi
 local t;
   t:=2 in pi;
   t:=t and IsPiNumber(pi,2^(6*k)+1);
@@ -545,7 +545,7 @@ if t[1]=1 then return SporadicNames[t[2]];
     if 2^t[4]>mq then qstr:=Concatenation("2^",String(t[4]));
                  else qstr:=String(2^t[4]);
     fi; 
-    s:=Concatenation(FamilyNames[t[1]],"(",qstr,")");                                          ## Sz,2F4
+    s:=Concatenation(FamilyNames[t[1]],"(",qstr,")");                                          ## Sz, 2F4
     if t[1]=18 and t[4]=1 then s:=Concatenation(s,"'"); fi;  
     return s;
   elif t[1]=17 then  
@@ -640,7 +640,7 @@ time; # 90685445                                         ##  ~ 25 hours ( time m
 Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 nonabelian FSGs with prime divisors of their orders at most 10000
                                                          ##     as claimed in the paper
 
-## Sorting codesSimpleGroups10000 by largest prime divisor :
+## Sorting codesSimpleGroups10000 by largest prime factor :
 
 ## The result of the following soritng procedure is a list sortedCodesSimpleGroups10000 of pairs [p,list_p], where 
 ## p                is a prime (up to 10000)
