@@ -626,13 +626,12 @@ codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with
 Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 non-abelian FSGs with prime divisors of their orders at most 1000
 
 
-
 #### Example 3 ####
 
 ## Obs. Larger lists of primes ( than those available in GAP by default ) 
 ##      can be downloaded from various online sources, e.g., from t5k.org
 
-## Assuming Primes4 is a list of all 1229 primes not exceeding 10000
+## Assuming <Primes4> is a list of all 1229 primes not exceeding 10000
 
 codesSimpleGroups10000 := SimpleGroupsPi( Primes4 );;    ## codes for all FSGs with prime divisors of their orders at most 10000
 time; # 90685445                                         ##  ~ 25 hours ( time may vary for distinct runs/systems/etc. )
@@ -640,13 +639,14 @@ time; # 90685445                                         ##  ~ 25 hours ( time m
 Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 non-abelian FSGs with prime divisors of their orders at most 10000
                                                          ##     as claimed in the paper
 
-## Sorting codesSimpleGroups10000 by largest prime factor :
+## Sorting <codesSimpleGroups10000> by largest prime factor :
 
-## The result of the following soritng procedure is a list sortedCodesSimpleGroups10000 of pairs [p,list_p], where 
+## The result of the following soritng procedure is a list <sortedCodesSimpleGroups10000> of pairs [ p, list_p ], where 
+## 
 ## p                is a prime (up to 10000)
 ## list_p           is a list of tuples [ name, generic, primeSpectrum, collectedFactors, code ]
-##                     one for each group G whose maximal prime divisor of its orders is p
-## name             is the string name of G
+##                     one for each group G whose maximal prime divisor of its orders is <p>
+## name             is the name string of G
 ## generic          is true of false according as G is generic or not
 ## primeSpectrum    is pi(G) (omitted for large alternating groups)
 ## collectedFactors is the factorisation of the order (omitted for large alternating groups)
