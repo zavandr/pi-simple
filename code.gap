@@ -71,10 +71,10 @@ return
                  (n in [3,4] and p^k>2) or                      ##               ( L2(9) is encoded as A6 )
                  (n=2 and p^k>5 and p^k<>9) ) ) or              ##               ( L3(2) is encoded as L2(7) )  
   ( t =  4 and ( (n>=3) or (n=2 and p^k>2) ) ) or               ## S2n(q)        ( S2(q) is encoded as L2(q) )
-  ( t =  5 and ( (n>=3) and (p<>2) ) ) or                       ## O2n+1(q) 
-  ( t =  6 and n>=4 )   or                                      ## O_{2n}^+(q)
-  ( t =  7 and ( (n>=5) or (n in [3,4] and p^k>2) ) ) or        ## U_n(q)        ( U4(2) is encoded as S4(3) )  
-  ( t =  8 and n>=4  )  or                                      ## O_{2n}-(q)
+  ( t =  5 and ( (n>=3) and (p<>2) ) ) or                       ## O{2n+1}(q) 
+  ( t =  6 and n>=4 )   or                                      ## O{2n}^+(q)
+  ( t =  7 and ( (n>=5) or (n in [3,4] and p^k>2) ) ) or        ## Un(q)        ( U4(2) is encoded as S4(3) )  
+  ( t =  8 and n>=4  )  or                                      ## O{2n}-(q)
   ( t =  9 and p^k>2 )  or                                      ## G2(q)
   ( t = 10 and true  )  or                                      ## F4(q)
   ( t = 11 and true  )  or                                      ## E6(q)
@@ -83,8 +83,8 @@ return
   ( t = 14 and true  )  or                                      ## 3D4(q)
   ( t = 15 and true  )  or                                      ## 2E6(q)
   ( t = 16 and k mod 2 = 1 and k>1 ) or                         ## Sz(q)
-  ( t = 17 and k mod 2 = 1 and k>1 ) or                         ## 2G_2(q)
-  ( t = 18 and k mod 2 = 1 );                                   ## 2F_4(q)       ( k = 1 encodes the Tits group 2F4(2)' )
+  ( t = 17 and k mod 2 = 1 and k>1 ) or                         ## 2G2(q)
+  ( t = 18 and k mod 2 = 1 );                                   ## 2F4(q)       ( k = 1 encodes the Tits group 2F4(2)' )
 end;
 
 ####################################################################
@@ -120,9 +120,9 @@ local t,i;
 return t;
 end;
 
-######################## L_n(q) #############################
+######################## Ln(q) #############################
 
-PiContainsLn := function(p,k,n,pi)        ## checks if pi( L_n(p^k) ) is in pi
+PiContainsLn := function(p,k,n,pi)        ## checks if pi( Ln(p^k) ) is in pi
 local i,t;
   t:=p in pi;
   i:=2;
@@ -132,9 +132,9 @@ local i,t;
 return t;
 end;
 
-######################## S_{2n}(q) #############################
+######################## S{2n}(q) #############################
 
-PiContainsS2n := function(p,k,n,pi)        ## checks if pi( S_{2n}(p^k) ) is in pi
+PiContainsS2n := function(p,k,n,pi)        ## checks if pi( S{2n}(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -145,9 +145,9 @@ return t;
 end;
 
 
-####################### O_{2n+1}(q) #############################
+####################### O{2n+1}(q) #############################
 
-PiContainsO2n1 := function(p,k,n,pi)        ## checks if pi( O_{2n+1}(p^k) )  is in pi
+PiContainsO2n1 := function(p,k,n,pi)        ## checks if pi( O{2n+1}(p^k) )  is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -157,9 +157,9 @@ local t,i;
 return t;
 end;
 
-####################### O_{2n}^+(q) #############################
+####################### O{2n}^+(q) #############################
 
-PiContainsO2nPlus := function(p,k,n,pi)        ## checks if pi( O_{2n}^+(p^k) ) is in pi
+PiContainsO2nPlus := function(p,k,n,pi)        ## checks if pi( O{2n}^+(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -170,9 +170,9 @@ local t,i;
 return t;
 end;
 
-####################### U_n(q) #############################
+####################### Un(q) #############################
 
-PiContainsUn := function(p,k,n,pi)             ## checks if pi( U_n(p^k) ) is in pi
+PiContainsUn := function(p,k,n,pi)             ## checks if pi( Un(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -182,9 +182,9 @@ local t,i;
 return t;
 end;
 
-##################### O_{2n}-(q) #############################
+##################### O{2n}-(q) #############################
 
-PiContainsO2nMinus := function(p,k,n,pi)        ## checks if pi( O_{2n}-(p^k) ) is in pi
+PiContainsO2nMinus := function(p,k,n,pi)        ## checks if pi( O{2n}-(p^k) ) is in pi
 local t,i;
   t:=p in pi;
   i:=2;
@@ -252,9 +252,9 @@ local t;
 return t;
 end;
 
-####################### 3D_4(q) #############################
+####################### 3D4(q) #############################
 
-PiContains3D4 := function(p,k,pi)                  ## checks if pi( 3D_4(p^k) ) is in pi
+PiContains3D4 := function(p,k,pi)                  ## checks if pi( 3D4(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(8*k)+p^(4*k)+1);
@@ -262,9 +262,9 @@ local t;
 return t;
 end;
 
-####################### 2E_6(q) #############################
+####################### 2E6(q) #############################
 
-PiContains2E6 := function(p,k,pi)                   ## checks if pi( 2E_6(p^k) ) is in pi
+PiContains2E6 := function(p,k,pi)                   ## checks if pi( 2E6(p^k) ) is in pi
 local t;
   t:=p in pi;
   t:=t and IsPiNumber(pi,p^(12*k)-1);
@@ -284,9 +284,9 @@ local t;
 return t;
 end;
 
-####################### 2G_2(q) #############################
+####################### 2G2(q) #############################
 
-PiContains2G2 := function(k,pi)                       ## checks if pi( 2G_2(3^k) ) is in pi
+PiContains2G2 := function(k,pi)                       ## checks if pi( 2G2(3^k) ) is in pi
 local t;
   t:=3 in pi;
   t:=t and IsPiNumber(pi,3^(3*k)+1);
@@ -294,9 +294,9 @@ local t;
 return t;
 end;
 
-####################### 2F_4(q) #############################
+####################### 2F4(q) #############################
 
-PiContains2F4 := function(k,pi)                       ## checks if pi( 2F_4(2^k) ) is in pi
+PiContains2F4 := function(k,pi)                       ## checks if pi( 2F4(2^k) ) is in pi
 local t;
   t:=2 in pi;
   t:=t and IsPiNumber(pi,2^(6*k)+1);
@@ -344,7 +344,7 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
       if n0<6 and p=2 then n0:=6; fi;           ## checking if (p,n0+1)=(2,<=6)
       if n0=1 and Size(PrimePowersInt(p+1))=2   ## checking if (p,n0+1)=(2^t-1,2)
       then n0:=2; fi;
-      ##################### L_n(q) #############################
+      ##################### Ln(q) #############################
       Info( InfoPiSimple, 1, "  Case Ln(q)" );
       for l in [2..n0] do               ## l=n*k
       Info( InfoPiSimple, 2, "     l = ",l,"  n0 = ",n0,"  p = ",p);
@@ -354,7 +354,7 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
          fi;
        od;
       od;
-      ##################### S_{2n}(q) #############################
+      ##################### S{2n}(q) #############################
       Info(InfoPiSimple,1,"  Case S2n(q)");
       for l in [4,6..(n0-(n0 mod 2))] do ## l=2*n*k
        for k in DivisorsInt(l/2) do
@@ -363,7 +363,7 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
          fi;
        od;
       od;
-      ##################### O_{2n+1}(q) #############################
+      ##################### O{2n+1}(q) #############################
       Info(InfoPiSimple,1,"  Case O{2n+1}(q)");
       for l in [6,8..(n0-(n0 mod 2))] do ## l=2*n*k
        for k in DivisorsInt(l/2) do
@@ -372,7 +372,7 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
         fi;
        od;
       od;
-      ##################### O_{2n}^+(q) #############################
+      ##################### O{2n}^+(q) #############################
       Info(InfoPiSimple,1,"  Case O{2n}+(q)");
       for l in [6,8..(n0-(n0 mod 2))] do ## l=(2*n-2)*k
        for k in DivisorsInt(l/2) do
@@ -381,7 +381,7 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
         fi;
        od;
       od;  
-      ##################### O_{2n}-(q) #############################
+      ##################### O{2n}-(q) #############################
       Info(InfoPiSimple,1,"  Case O{2n}-(q)");
       for l in [6,8..(n0-(n0 mod 2))] do ## l=(2*n-2)*k
        for k in DivisorsInt(l/2) do
@@ -439,7 +439,7 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
         if IsAdmissibleCode(code) and PiContains2E6(p,l/18,pi) then Add(result,code);
         fi;
       od;
-      ##################### U_n(q) #############################
+      ##################### Un(q) #############################
       Info(InfoPiSimple,1,"  Case Un(q)"); 
         n0:=Maximum(List(pi0,t->OrderModTwisted(p,t)));
       if n0<3 and p=2 then n0:=3; fi;           ## checking if (p,n0+1)=(2,<=3)
@@ -466,7 +466,7 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
         if IsAdmissibleCode(code) and PiContainsSz(l/4,pi) then Add(result,code);
         fi;
       od;
-      ##################### 2F_4(q) ###########################
+      ##################### 2F4(q) ###########################
       Info(InfoPiSimple,1,"  Case 2F4(q)"); 
       for l in [12,24..(n0-(n0 mod 12))] do ## l=12*k
         code:=[18,0,0,l/12];
@@ -474,7 +474,7 @@ local result, smallestNonPiPrime, cont, code, p, pi0, n0, l, k, t;
         fi;
       od; 
     fi;
-    ##################### 2G_2(q) #############################
+    ##################### 2G2(q) #############################
     if 3 in pi then 
      Info(InfoPiSimple,1,"  Case 2G2(q)"); 
       n0:=Maximum(List(Difference(pi,[3]),t->OrderMod(3,t) ));    
@@ -508,23 +508,23 @@ local y,n,p,k,q;
   if not IsAdmissibleCode(t) then Print("Sorry, ", t," is not an admissible code for a FSG ...\n"); return fail;
     elif y=1  then return Size(CharacterTable(SporadicNames[t[2]]));
     elif y=2  then return Factorial(n)/2;                                                    ## Alt_n
-    elif y=3  then return q^(n*(n-1)/2)*Product([2..n], i->(q^i-1))/Gcd(n,q-1);              ## L_n(p^k)
-    elif y=4  then return q^(n^2)*Product([1..n], i->(q^(2*i)-1))/Gcd(2,q-1);                ## S_{2n}(p^k)
-    elif y=5  then return q^(n^2)*Product([1..n], i->(q^(2*i)-1))/Gcd(2,q-1);                ## O_{2n+1}(p^k)
-    elif y=6  then return q^(n*(n-1))*(q^n-1)*Product([1..n-1],i->(q^(2*i)-1))/Gcd(4,q^n-1); ## O_{2n}^+(p^k)
-    elif y=7  then return q^(n*(n-1)/2)*Product([2..n],i->(q^i-(-1)^i))/Gcd(n,q+1);          ## U_n(p^k)
-    elif y=8  then return q^(n*(n-1))*(q^n+1)*Product([1..n-1],i->(q^(2*i)-1))/Gcd(4,q^n+1); ## O_{2n}^-(p^k)
+    elif y=3  then return q^(n*(n-1)/2)*Product([2..n], i->(q^i-1))/Gcd(n,q-1);              ## Ln(p^k)
+    elif y=4  then return q^(n^2)*Product([1..n], i->(q^(2*i)-1))/Gcd(2,q-1);                ## S{2n}(p^k)
+    elif y=5  then return q^(n^2)*Product([1..n], i->(q^(2*i)-1))/Gcd(2,q-1);                ## O{2n+1}(p^k)
+    elif y=6  then return q^(n*(n-1))*(q^n-1)*Product([1..n-1],i->(q^(2*i)-1))/Gcd(4,q^n-1); ## O{2n}^+(p^k)
+    elif y=7  then return q^(n*(n-1)/2)*Product([2..n],i->(q^i-(-1)^i))/Gcd(n,q+1);          ## Un(p^k)
+    elif y=8  then return q^(n*(n-1))*(q^n+1)*Product([1..n-1],i->(q^(2*i)-1))/Gcd(4,q^n+1); ## O{2n}^-(p^k)
     elif y=9  then return q^6*Product([6,2],i->(q^i-1));                                     ## G2(p^k)
     elif y=10 then return q^24*Product([12,8,6,2],i->(q^i-1));                               ## F4(p^k)
     elif y=11 then return q^36*Product([12,9,8,6,5,2],i->(q^i-1))/Gcd(3,q-1);                ## E6(p^k)
     elif y=12 then return q^63*Product([18,14,12,10,8,6,2],i->(q^i-1))/Gcd(2,q-1);           ## E7(p^k)
     elif y=13 then return q^120*Product([30,24,20,18,14,12,8,2],i->(q^i-1));                 ## E8(p^k)
-    elif y=14 then return q^12*Product([6,2],i->(q^i-1))*(q^8+q^4+1);                        ## 3D_4(p^k)
-    elif y=15 then return q^36*Product([12,9,8,6,5,2],i->(q^i-(-1)^i))/Gcd(3,q+1);           ## 2E_6(p^k)
+    elif y=14 then return q^12*Product([6,2],i->(q^i-1))*(q^8+q^4+1);                        ## 3D4(p^k)
+    elif y=15 then return q^36*Product([12,9,8,6,5,2],i->(q^i-(-1)^i))/Gcd(3,q+1);           ## 2E6(p^k)
     elif y=16 then q:=2^k; return q^2*(q^2+1)*(q-1);                                         ## Sz(2^k)
-    elif y=17 then q:=3^k; return q^3*(q^3+1)*(q-1);                                         ## 2G_2(3^k)
-    elif y=18 then q:=2^k; if k>1 then return q^12*(q^6+1)*(q^4-1)*(q^3+1)*(q-1);            ## 2F_4(2^k), k>1
-                                  else return q^12*(q^6+1)*(q^4-1)*(q^3+1)*(q-1)/2;          ## 2F_4(2)'   
+    elif y=17 then q:=3^k; return q^3*(q^3+1)*(q-1);                                         ## 2G2(3^k)
+    elif y=18 then q:=2^k; if k>1 then return q^12*(q^6+1)*(q^4-1)*(q^3+1)*(q-1);            ## 2F4(2^k), k>1
+                                  else return q^12*(q^6+1)*(q^4-1)*(q^3+1)*(q-1)/2;          ## 2F4(2)'   
                            fi;
     else return fail;
   fi;
