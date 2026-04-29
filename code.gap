@@ -53,7 +53,7 @@ FamilyNames :=                              ##  name strings for the 18 families
    "E6", "E7",  "E8", "3D4", "2E6",
                 "Sz", "2G2", "2F4"];
 
-SporadicNames:=                              ##  names of sporadic groups as used in GAP
+SporadicNames:=                              ##  name strings of sporadic groups as used in GAP
 [ "M11",  "M12",  "J1", "M22",  "J2", 
   "M23",   "HS",  "J3", "M24", "McL", 
    "He",   "Ru", "Suz",  "ON", "Co3", 
