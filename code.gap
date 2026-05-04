@@ -20,7 +20,7 @@
   
 ## The "code" of a non-abelian FSG is a quadruple [ t, n, p, k ], where 
 ## 
-## t = 1,...,18  ecodes the following 18 families of FSGs
+## t = 1,...,18  encodes the following 18 families of FSGs
 ## 
 ##   t    Family      Parameters
 ## -----------------------------------
