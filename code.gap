@@ -530,6 +530,9 @@ local y,n,p,k,q;
   fi;
 end;
 
+PiByCode := function(t) ## returns the prime spectrum of a FSG with code t
+  return List( Collected( Factors( OrderByCode( t ) ) ) , d -> d[1] );
+end;
 
 NameByCode:=function(t) ## returns a human-readable form of a group with code t
 local s,q,qstr,mq;
@@ -589,9 +592,7 @@ Size(codes);   #  13
 List( codes, NameByCode );           ## names of found groups 
 # [ "A5", "A6", "U5(2)", "L2(3^5)", "S4(3)", "L2(11)", "L2(11^2)", "S4(11)", "U3(11)", "U4(11)", "U5(11)", "M11", "M12" ]
 
-orders := List( codes, c -> OrderByCode(c) );;  ## orders of found groups 
-
-List( orders, o -> List( Collected(Factors(o)), t -> t[1] ));   ## prime spectra of found groups 
+List( codes, PiByCode );   ## prime spectra of found groups 
 # [ [ 2, 3, 5 ],                     ##  "A5"            
 #   [ 2, 3, 5 ],                     ##  "A6"             
 #   [ 2, 3, 5, 11 ],                 ##  "U5(2)"              
@@ -745,6 +746,103 @@ sortedCodesSimpleGroups10000;        ## result
 #             [ "L2(9973)", true, [ 2, 3, 277, 4987, 9973 ], [ [ 2, 2 ], [ 3, 2 ], [ 277, 1 ], [ 4987, 1 ], [ 9973, 1 ] ], [ 3, 2, 9973, 1 ] ] ] ] ]
 
 ## Theorem 1 and the Tables follow from the above outputs
+
+  
+#### Example 4 ####
+##
+## Sorting the groups from Theorem 1 by the size of their prime spectrum
+##
+## In other words, we find all n-primary nonabelian FSGs for n >=3 
+## with all prime divisors of their orders not exceeding 10000
+
+## We assume that <codesSimpleGroups10000> is as calculated in Example 3 above
+
+## First, let us filter out the non-alternating groups,
+##   because finding the prime spectra of large alternating groups is
+##   straightforward theoretically, but time-consuming computationally
+
+codesSimpleNonAltGroups10000 := 
+  Filtered(codesSimpleGroups10000, code -> not code[1]=2 );;         ## codes of non-alternating groups with prime divisors less than 10000
+Size(codesSimpleNonAltGroups10000); # 5070
+
+piSizesNonAlt := Set( codesSimpleNonAltGroups10000 , code -> 
+                    Size(Collected(Factors(OrderByCode(code)))) );   ## Possible sizes of prime spectra of non-alternating groups
+
+# [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 ]                            
+
+## Conclusion: The largest size of prime spectrum for non-alternating groups is 24 as claimed in the paper
+
+## Finding all non-alternating groups for every fixed possible size of prime spectrum :
+
+## The result of the following procedure is a list <piSizeSortedNonAlt> of pairs [ size, codes_size ], where 
+##    size        is one of possible sizes 3..24 of prime spectrum
+##    codes_size  is the set of codes of all n-primary non-alternating groups with n = <size>
+
+piSizeSortedNonAlt := List( piSizesNonAlt, n -> [ n, [] ] );;   ## initialising the resulting list
+piSize := 0;;                                                   ## this suppresses the "Unbound global variable" warning
+
+for code in codesSimpleNonAltGroups10000 do
+  piSize := Size(Collected(Factors(OrderByCode(code))));        ## size of prime spectrum
+  rcd := First( piSizeSortedNonAlt, r -> r[1] = piSize );
+  AddSet( rcd[2], code );
+od;
+
+List( piSizeSortedNonAlt, r -> [r[1],Size(r[2])] );             ## numbers of n-primary NON-ALTERNATING groups for n = 3..24
+
+# [ [  3,   6 ], [  4,  61 ], [ 5,  347 ], [ 6, 711 ], [  7, 593 ], [  8, 624 ], [  9, 822 ], [ 10, 639 ], [ 11, 392 ], 
+#   [ 12, 305 ], [ 13, 236 ], [ 14, 115 ], [ 15, 81 ], [ 16,  56 ], [ 17,  30 ], [ 18,   6 ], [ 19,  14 ], [ 20,   5 ], 
+#   [ 21,  10 ], [ 22,  11 ], [ 23,   2 ], [ 24,  4 ] ]
+
+### Adding the codes of n-primary alternating groups ( up to n = 24 ) :
+
+##  Obs. The number of n-primary alternating groups equals p{n+1} - p{n} where p{n} is the n-th prime
+
+## The result of the following procedure is a list <piSizeSorted> of pairs [ size, codes_size ], where 
+##    size        is one of possible sizes 3..24 of prime spectrum
+##    codes_size  is the set of codes of all n-primary groups with n = <size> including alternating groups
+
+piSizeSorted := ShallowCopy( piSizeSortedNonAlt );;       
+for rcd in piSizeSorted do
+  for p in [Primes[rcd[1]]..Primes[rcd[1]+1]-1] do
+    AddSet(rcd[2], [2,p,0,0]);
+  od;
+od;
+
+List( piSizeSorted, r -> [r[1],Size(r[2])] );                    ## numbers of ALL n-primary groups  for n = 3..24
+
+# [ [ 3, 8 ], [ 4, 65 ], [ 5, 349 ], [ 6, 715 ], [ 7, 595 ], [ 8, 628 ], [ 9, 828 ], [ 10, 641 ], [ 11, 398 ], 
+#   [ 12, 309 ], [ 13, 238 ], [ 14, 119 ], [ 15, 87 ], [ 16, 62 ], [ 17, 32 ], [ 18, 12 ], [ 19, 18 ], 
+#   [ 20, 7 ], [ 21, 16 ], [ 22, 15 ], [ 23, 8 ], [ 24, 12 ] ]
+
+## This justifies the list of |Kn| for n = 3..24 given in the paper
+
+## Case n = 24. Printing the groups from K_24 :
+
+piSizeSorted[22][1] = 24; # true   ## confirming n = 24
+List( piSizeSorted[22][2], NameByCode );
+## [ "A89", "A90", "A91", "A92", "A93", "A94", "A95", "A96", "L15(4)", "S30(2)", "O32+(2)", "U15(4)" ]
+
+## This justifies the last example in the paper.
+
+
+## Case n = 3. Printing the 3-primary with their spectra
+
+piSizeSorted[1][1] = 2; # true   ## confirming n = 3
+List( piSizeSorted[1][2], code -> [ NameByCode(code), PiByCode(code)] );
+
+# [ [     "A5", [ 2, 3,  5 ] ], 
+#   [     "A6", [ 2, 3,  5 ] ], 
+#   [  "L2(8)", [ 2, 3,  7 ] ], 
+#   [  "L2(7)", [ 2, 3,  7 ] ], 
+#   [ "L2(17)", [ 2, 3, 17 ] ], 
+#   [  "L3(3)", [ 2, 3, 13 ] ], 
+#   [  "S4(3)", [ 2, 3,  5 ] ], 
+#   [  "U3(3)", [ 2, 3,  7 ] ] ]
+
+## These are all 3-primary groups, see
+##
+## M. Herzog, On finite simple groups of order divisible by three primes only, Journal of Algebra, Volume 10, Issue 3, November 1968, Pages 383-388
+## https://doi.org/10.1016/0021-8693(68)90088-4
 
 ### END ###
 ###########
