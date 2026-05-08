@@ -894,7 +894,7 @@ od;
 
 ####
 
-##  Printing the 3-primary with their spectra
+##  Printing the 3-primary simple groups with their spectra
 
 piSizeSorted[1][1] = 3; # true                                           ## confirming n = 3
 List( piSizeSorted[1][2], code -> [ NameByCode(code), PiByCode(code)] );
