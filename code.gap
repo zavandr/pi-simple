@@ -20,11 +20,11 @@
   
 ## The "code" of a non-abelian FSG is a quadruple [ t, n, p, k ], where 
 ## 
-## t = 1,...,18  encodes the following 18 families of FSGs
+## t = 1..18  encodes the following 18 families of FSGs
 ## 
 ##   t    Family      Parameters
 ## -----------------------------------
-##   1    Sporadic    n = 1,...,26, p = *, k = *   ( * = any number, usually 0. Value ignored )
+##   1    Sporadic    n = 1..26, p = *, k = *   ( * = any number, usually 0. Value ignored )
 ##   2    Alt n       p = *, k = *
 ##   3    L n (q)     q = p^k
 ##   4    S 2n (q)    q = p^k
