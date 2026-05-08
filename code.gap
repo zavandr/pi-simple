@@ -752,8 +752,8 @@ sortedCodesSimpleGroups10000;        ## result
 ##
 ## Sorting the groups from Theorem 1 by the size of their prime spectrum
 ##
-## In other words, we find all n-primary nonabelian FSGs for n >=3 
-## with all prime divisors of their orders not exceeding 10000
+## In other words, we find all n-primary nonabelian finite simple groups G for n >= 3 
+## with max( pi(G) ) < 10000
 
 ## We assume that <codesSimpleGroups10000> is as calculated in Example 3 above
 
@@ -782,7 +782,7 @@ piSizeSortedNonAlt := List( piSizesNonAlt, n -> [ n, [] ] );;   ## initialising 
 piSize := 0;;                                                   ## this suppresses the "Unbound global variable" warning
 
 for code in codesSimpleNonAltGroups10000 do
-  piSize := Size(Collected(Factors(OrderByCode(code))));        ## size of prime spectrum
+  piSize := Size(PiByCode(code));                               ## size of prime spectrum
   rcd := First( piSizeSortedNonAlt, r -> r[1] = piSize );
   AddSet( rcd[2], code );
 od;
@@ -795,10 +795,10 @@ List( piSizeSortedNonAlt, r -> [r[1],Size(r[2])] );             ## numbers of n-
 
 ### Adding the codes of n-primary alternating groups ( up to n = 24 ) :
 
-##  Obs. The number of n-primary alternating groups equals p{n+1} - p{n} where p{n} is the n-th prime
+##  Obs. The number of n-primary alternating groups equals p{n+1} - p{n} where p{n} is the n-th prime.
 
 ## The result of the following procedure is a list <piSizeSorted> of pairs [ size, codes_size ], where 
-##    size        is one of possible sizes 3..24 of prime spectrum
+##    size        is in [3..24]
 ##    codes_size  is the set of codes of all n-primary groups with n = <size> including alternating groups
 
 piSizeSorted := ShallowCopy( piSizeSortedNonAlt );;       
@@ -896,7 +896,7 @@ od;
 
 ##  Printing the 3-primary with their spectra
 
-piSizeSorted[1][1] = 2; # true   ## confirming n = 3
+piSizeSorted[1][1] = 3; # true                                           ## confirming n = 3
 List( piSizeSorted[1][2], code -> [ NameByCode(code), PiByCode(code)] );
 
 # [ [     "A5", [ 2, 3,  5 ] ], 
@@ -908,7 +908,7 @@ List( piSizeSorted[1][2], code -> [ NameByCode(code), PiByCode(code)] );
 #   [  "S4(3)", [ 2, 3,  5 ] ], 
 #   [  "U3(3)", [ 2, 3,  7 ] ] ]
 
-## Obs. These are ALL 3-primary groups ( not only those with max|pi(G)| < 10000 ), see
+## Obs. These are ALL 3-primary groups ( not only those with max( pi(G) ) < 10000 ), see
 ##
 ## M. Herzog, On finite simple groups of order divisible by three primes only, Journal of Algebra, Volume 10, Issue 3, November 1968, Pages 383-388.
 ## https://doi.org/10.1016/0021-8693(68)90088-4
