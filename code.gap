@@ -816,7 +816,7 @@ List( piSizeSorted, r -> [r[1],Size(r[2])] );                    ## numbers of A
 
 ## This justifies the list of |Kn| for n = 3..24 given in the paper
 
-## Printing ALL n-primary groups (for n <= 24):
+## Printing all simple n-primary groups G (for n <= 24) with max( pi(G) ) < 10000 :
 
 for rcd in piSizeSorted do
   Print(" Groups with prime spectrum of size ",rcd[1]," (",Size(rcd[2])," groups) :\n");
