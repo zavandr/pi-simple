@@ -571,7 +571,6 @@ end;
 ##
 ##   Section 4. Examples 
 ##
-## Finding all non-abelian finite simple groups with prime spectrum a subset of a given set <pi>
 
 ##
 ##  First, paste into GAP all the lists and functions from the above three sections:
@@ -582,6 +581,8 @@ end;
 
 
 #### Example 1 ####
+##
+## Finding all non-abelian finite simple groups with prime spectrum a subset of a given set <pi>
 
 pi := [ 2, 3, 5, 11, 37, 61, 13421 ];   ##  =  pi( U5(11) ),   ( U5(11) has the largest prime divisor of its order among all group in the Atlas table on pp. 239--242 )
 
@@ -610,6 +611,9 @@ List( codes, PiByCode );   ## prime spectra of found groups
 
 
 #### Example 2 ####
+##
+## Finding all non-abelian finite simple groups with max( pi(G) ) < 1000
+## and thus reproducing the result of [ Sib. Elect. Math. Reports, 6 (2009), 1--12 ] 
 
 SetInfoLevel(InfoPiSimple,1);                         ## to keep track of calculations
 codesSimpleGroups1000 := SimpleGroupsPi(Primes);;     ## codes for all FSGs with prime divisors of their orders at most 1000
@@ -628,10 +632,12 @@ Size(codesSimpleGroups1000);   #  1972                ##  => There are 1972 non-
 
 
 #### Example 3 ####
-
+##
+## Finding all non-abelian finite simple groups with max( pi(G) ) < 10000
+##
 ## Obs. Larger lists of primes ( than those available in GAP by default ) 
 ##      can be downloaded from various online sources, e.g., from t5k.org
-
+##
 ## Assuming <Primes4> is a list of all 1229 primes not exceeding 10000
 
 codesSimpleGroups10000 := SimpleGroupsPi( Primes4 );;    ## codes for all FSGs with prime divisors of their orders at most 10000
@@ -752,8 +758,7 @@ sortedCodesSimpleGroups10000;        ## result
 ##
 ## Sorting the groups from Theorem 1 by the size of their prime spectrum
 ##
-## In other words, we find all n-primary nonabelian finite simple groups G for n >= 3 
-## with max( pi(G) ) < 10000
+## In other words, we find all n-primary nonabelian finite simple groups G for n >= 3 with max( pi(G) ) < 10000
 
 ## We assume that <codesSimpleGroups10000> is as calculated in Example 3 above
 
