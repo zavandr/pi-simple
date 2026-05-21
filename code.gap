@@ -654,7 +654,7 @@ Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 
 ## list_p           is a list of tuples [ name, generic, primeSpectrum, collectedFactors, code ]
 ##                     one for each group G whose maximal prime divisor of its orders is <p>
 ## name             is the name string of G
-## generic          is true of false according as G is generic or not
+## generic          is true or false according as G is generic or not
 ## primeSpectrum    is pi(G) (omitted for large alternating groups)
 ## collectedFactors is the factorisation of the order (omitted for large alternating groups)
 ## code             is the code of G 
