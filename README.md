@@ -5,8 +5,8 @@ with a prescibed *prime spectrum* (i.e. the set of prime divisors of the order).
 The code accompanies the papers 
 
 *Simple groups with narrow prime spectrum: Extended list*,  
-Sib. Elect. Math. Reports, *accepted*.  
-(DOI: TBA).
+Sib. Elect. Math. Reports, **23**, N1 (2026), 582--602.  
+(URL: https://math-semr.ru/content/23-1/0582)
 
 and, retrospectively,
 
