@@ -764,7 +764,7 @@ sortedCodesSimpleGroups10000;        ## result
 
 ## First, let us filter out the non-alternating groups,
 ##   because finding the prime spectra of large alternating groups is
-##   straightforward theoretically, but time-consuming computationally
+##   straightforward theoretically, but time-consuming computationally (if the general procedure is used)
 
 codesSimpleNonAltGroups10000 := 
   Filtered(codesSimpleGroups10000, code -> not code[1]=2 );;         ## codes of non-alternating groups with prime divisors less than 10000
