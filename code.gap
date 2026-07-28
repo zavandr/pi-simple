@@ -648,7 +648,7 @@ Size(codesSimpleGroups10000); # 15072                    ##  => There are 15072 
 
 ## Sorting <codesSimpleGroups10000> by largest prime factor :
 
-## The result of the following soritng procedure is a list <sortedCodesSimpleGroups10000> of pairs [ p, list_p ], where 
+## The result of the following sorting procedure is a list <sortedCodesSimpleGroups10000> of pairs [ p, list_p ], where 
 ## 
 ## p                is a prime (up to 10000)
 ## list_p           is a list of tuples [ name, generic, primeSpectrum, collectedFactors, code ]
