@@ -60,10 +60,9 @@ SporadicNames:=                              ##  name strings of sporadic groups
   "Co2", "Fi22",  "HN",  "Ly",  "Th", 
  "Fi23",  "Co1",  "J4", "F3+",   "B", "M" ];;
 
-
-IsAdmissibleCode := function(y)              ## checks if y = [ t, n, p, k ] is an admissible code for a FSG
+IsAdmissibleCode := function(cd)                ## checks if cd = [ t, n, p, k ] is an admissible code for a FSG
 local t,n,p,k;
-  t:=y[1]; n:=y[2]; p:=y[3]; k:=y[4];
+  t:=cd[1]; n:=cd[2]; p:=cd[3]; k:=cd[4];
 return
   ( t =  1 and n in [1..26] ) or                                ## Sporadic
   ( t =  2 and n>=5)    or                                      ## Alternating
