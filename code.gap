@@ -501,70 +501,69 @@ end;
 ##
 ##   Section 3. Auxiliaries 
 
-OrderByCode := function(t) ## returns the order of a FSG with code t
-local y,n,p,k,q;
-  y:=t[1]; n:=t[2]; p:=t[3]; k:=t[4]; q:=p^k;
-  if not IsAdmissibleCode(t) then Print("Sorry, ", t," is not an admissible code for a FSG ...\n"); return fail;
-    elif y=1  then return Size(CharacterTable(SporadicNames[t[2]]));
-    elif y=2  then return Factorial(n)/2;                                                    ## Alt_n
-    elif y=3  then return q^(n*(n-1)/2)*Product([2..n], i->(q^i-1))/Gcd(n,q-1);              ## Ln(p^k)
-    elif y=4  then return q^(n^2)*Product([1..n], i->(q^(2*i)-1))/Gcd(2,q-1);                ## S{2n}(p^k)
-    elif y=5  then return q^(n^2)*Product([1..n], i->(q^(2*i)-1))/Gcd(2,q-1);                ## O{2n+1}(p^k)
-    elif y=6  then return q^(n*(n-1))*(q^n-1)*Product([1..n-1],i->(q^(2*i)-1))/Gcd(4,q^n-1); ## O{2n}^+(p^k)
-    elif y=7  then return q^(n*(n-1)/2)*Product([2..n],i->(q^i-(-1)^i))/Gcd(n,q+1);          ## Un(p^k)
-    elif y=8  then return q^(n*(n-1))*(q^n+1)*Product([1..n-1],i->(q^(2*i)-1))/Gcd(4,q^n+1); ## O{2n}^-(p^k)
-    elif y=9  then return q^6*Product([6,2],i->(q^i-1));                                     ## G2(p^k)
-    elif y=10 then return q^24*Product([12,8,6,2],i->(q^i-1));                               ## F4(p^k)
-    elif y=11 then return q^36*Product([12,9,8,6,5,2],i->(q^i-1))/Gcd(3,q-1);                ## E6(p^k)
-    elif y=12 then return q^63*Product([18,14,12,10,8,6,2],i->(q^i-1))/Gcd(2,q-1);           ## E7(p^k)
-    elif y=13 then return q^120*Product([30,24,20,18,14,12,8,2],i->(q^i-1));                 ## E8(p^k)
-    elif y=14 then return q^12*Product([6,2],i->(q^i-1))*(q^8+q^4+1);                        ## 3D4(p^k)
-    elif y=15 then return q^36*Product([12,9,8,6,5,2],i->(q^i-(-1)^i))/Gcd(3,q+1);           ## 2E6(p^k)
-    elif y=16 then q:=2^k; return q^2*(q^2+1)*(q-1);                                         ## Sz(2^k)
-    elif y=17 then q:=3^k; return q^3*(q^3+1)*(q-1);                                         ## 2G2(3^k)
-    elif y=18 then q:=2^k; if k>1 then return q^12*(q^6+1)*(q^4-1)*(q^3+1)*(q-1);            ## 2F4(2^k), k>1
+OrderByCode := function(cd) ## returns the order of a FSG with the given code 'cd'
+local t,n,p,k,q;
+  t:=cd[1]; n:=cd[2]; p:=cd[3]; k:=cd[4]; q:=p^k;
+  if not IsAdmissibleCode(cd) then Print("Sorry, ", cd," is not an admissible code for a FSG ...\n"); return fail;
+    elif t=1  then return Size(CharacterTable(SporadicNames[cd[2]]));
+    elif t=2  then return Factorial(n)/2;                                                    ## Alt_n
+    elif t=3  then return q^(n*(n-1)/2)*Product([2..n], i->(q^i-1))/Gcd(n,q-1);              ## Ln(p^k)
+    elif t=4  then return q^(n^2)*Product([1..n], i->(q^(2*i)-1))/Gcd(2,q-1);                ## S{2n}(p^k)
+    elif t=5  then return q^(n^2)*Product([1..n], i->(q^(2*i)-1))/Gcd(2,q-1);                ## O{2n+1}(p^k)
+    elif t=6  then return q^(n*(n-1))*(q^n-1)*Product([1..n-1],i->(q^(2*i)-1))/Gcd(4,q^n-1); ## O{2n}^+(p^k)
+    elif t=7  then return q^(n*(n-1)/2)*Product([2..n],i->(q^i-(-1)^i))/Gcd(n,q+1);          ## Un(p^k)
+    elif t=8  then return q^(n*(n-1))*(q^n+1)*Product([1..n-1],i->(q^(2*i)-1))/Gcd(4,q^n+1); ## O{2n}^-(p^k)
+    elif t=9  then return q^6*Product([6,2],i->(q^i-1));                                     ## G2(p^k)
+    elif t=10 then return q^24*Product([12,8,6,2],i->(q^i-1));                               ## F4(p^k)
+    elif t=11 then return q^36*Product([12,9,8,6,5,2],i->(q^i-1))/Gcd(3,q-1);                ## E6(p^k)
+    elif t=12 then return q^63*Product([18,14,12,10,8,6,2],i->(q^i-1))/Gcd(2,q-1);           ## E7(p^k)
+    elif t=13 then return q^120*Product([30,24,20,18,14,12,8,2],i->(q^i-1));                 ## E8(p^k)
+    elif t=14 then return q^12*Product([6,2],i->(q^i-1))*(q^8+q^4+1);                        ## 3D4(p^k)
+    elif t=15 then return q^36*Product([12,9,8,6,5,2],i->(q^i-(-1)^i))/Gcd(3,q+1);           ## 2E6(p^k)
+    elif t=16 then q:=2^k; return q^2*(q^2+1)*(q-1);                                         ## Sz(2^k)
+    elif t=17 then q:=3^k; return q^3*(q^3+1)*(q-1);                                         ## 2G2(3^k)
+    elif t=18 then q:=2^k; if k>1 then return q^12*(q^6+1)*(q^4-1)*(q^3+1)*(q-1);            ## 2F4(2^k), k>1
                                   else return q^12*(q^6+1)*(q^4-1)*(q^3+1)*(q-1)/2;          ## 2F4(2)'   
                            fi;
     else return fail;
   fi;
 end;
 
-PiByCode := function(t) ## returns the prime spectrum of a FSG with code t
-  return List( Collected( Factors( OrderByCode( t ) ) ) , d -> d[1] );
+PiByCode := function(cd) ## returns the prime spectrum of a FSG with the given code 'cd'
+  return List( Collected( Factors( OrderByCode( cd ) ) ) , d -> d[1] );
 end;
 
-NameByCode:=function(t) ## returns a human-readable form of a group with code t
+NameByCode:=function(cd) ## returns a human-readable form of a group with the given code 'cd'
 local s,q,qstr,mq;
 mq:=100; ## powers q=p^k > mq are not evaluated
-if t[3]^t[4]>mq and t[4]>1  then qstr:=Concatenation(String(t[3]),"^",String(t[4]));
-                            else qstr:=String(t[3]^t[4]);
+if cd[3]^cd[4]>mq and cd[4]>1  then qstr:=Concatenation(String(cd[3]),"^",String(cd[4]));
+                            else qstr:=String(cd[3]^cd[4]);
 fi;
-if not IsAdmissibleCode(t) then Error("Code ",t," is not admissible for a FSG ..."); 
+if not IsAdmissibleCode(cd) then Error("Code ",cd," is not admissible for a FSG ..."); 
 fi;
-if t[1]=1 then return SporadicNames[t[2]];
-  elif t[1]=2 then return Concatenation("A",String(t[2]));
-  elif t[1] in [16,18] then 
-    if 2^t[4]>mq then qstr:=Concatenation("2^",String(t[4]));
-                 else qstr:=String(2^t[4]);
+if cd[1]=1 then return SporadicNames[cd[2]];
+  elif cd[1]=2 then return Concatenation("A",String(cd[2]));
+  elif cd[1] in [16,18] then 
+    if 2^cd[4]>mq then qstr:=Concatenation("2^",String(cd[4]));
+                 else qstr:=String(2^cd[4]);
     fi; 
-    s:=Concatenation(FamilyNames[t[1]],"(",qstr,")");                                          ## Sz, 2F4
-    if t[1]=18 and t[4]=1 then s:=Concatenation(s,"'"); fi;  
+    s:=Concatenation(FamilyNames[cd[1]],"(",qstr,")");                                            ## Sz, 2F4
+    if cd[1]=18 and cd[4]=1 then s:=Concatenation(s,"'"); fi;  
     return s;
-  elif t[1]=17 then  
-    if 3^t[4]>mq then qstr:=Concatenation("3^",String(t[4]));
-                 else qstr:=String(3^t[4]);
+  elif cd[1]=17 then  
+    if 3^cd[4]>mq then qstr:=Concatenation("3^",String(cd[4]));
+                 else qstr:=String(3^cd[4]);
     fi; 
-    return Concatenation(FamilyNames[t[1]],"(",qstr,")");                                      ## 2G2
-  elif t[1] in [9..15] then return Concatenation(FamilyNames[t[1]],"(",qstr,")");              ## G2, F4, E6, E7, E8, 3D4, 2E6
-  elif t[1]=4          then return Concatenation("S",String(2*t[2]),"(",qstr,")");             ## S
-  elif t[1]=6          then return Concatenation("O",String(2*t[2]),"+(",qstr,")");            ## O+
-  elif t[1]=8          then return Concatenation("O",String(2*t[2]),"-(",qstr,")");            ## O-
-  elif t[1]=5          then return Concatenation("O",String(2*t[2]+1),"(",qstr,")");           ## O
-  elif t[1] in [3,7]   then return Concatenation(FamilyNames[t[1]],String(t[2]),"(",qstr,")"); ## L, U
+    return Concatenation(FamilyNames[cd[1]],"(",qstr,")");                                        ## 2G2
+  elif cd[1] in [9..15] then return Concatenation(FamilyNames[cd[1]],"(",qstr,")");               ## G2, F4, E6, E7, E8, 3D4, 2E6
+  elif cd[1]=4          then return Concatenation("S",String(2*cd[2]),"(",qstr,")");              ## S
+  elif cd[1]=6          then return Concatenation("O",String(2*cd[2]),"+(",qstr,")");             ## O+
+  elif cd[1]=8          then return Concatenation("O",String(2*cd[2]),"-(",qstr,")");             ## O-
+  elif cd[1]=5          then return Concatenation("O",String(2*cd[2]+1),"(",qstr,")");            ## O
+  elif cd[1] in [3,7]   then return Concatenation(FamilyNames[cd[1]],String(cd[2]),"(",qstr,")"); ## L, U
   else return fail;
 fi;
 end;
-
 
 ########################
 ##
